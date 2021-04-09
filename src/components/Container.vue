@@ -33,13 +33,15 @@
                   @start="handleMoveStart"
                   :move="handleMove"
                 >
+                  <template v-for="(item, index) in advanceComponents">
+                    <li v-if="advanceFields.indexOf(item.type) >= 0" class="form-edit-widget-label" :class="{'no-put': item.type == 'table'}"  :key="index">
+                      <a>
+                        <i class="icon iconfont" :class="item.icon"></i>
+                        <span>{{item.name}}</span>
+                      </a>
+                    </li>
+                  </template>
                   
-                  <li v-if="advanceFields.indexOf(item.type) >= 0" class="form-edit-widget-label" :class="{'no-put': item.type == 'table'}" v-for="(item, index) in advanceComponents" :key="index">
-                    <a>
-                      <i class="icon iconfont" :class="item.icon"></i>
-                      <span>{{item.name}}</span>
-                    </a>
-                  </li>
                 </draggable>
               </template>
               <!-- 布局字段 -->
@@ -51,13 +53,14 @@
                   @start="handleMoveStart"
                   :move="handleMove"
                 >
-                  
-                  <li v-if="layoutFields.indexOf(item.type) >=0" class="form-edit-widget-label no-put" v-for="(item, index) in layoutComponents" :key="index">
-                    <a>
-                      <i class="icon iconfont" :class="item.icon"></i>
-                      <span>{{item.name}}</span>
-                    </a>
-                  </li>
+                  <template v-for="(item, index) in layoutComponents">
+                    <li v-if="layoutFields.indexOf(item.type) >=0" class="form-edit-widget-label no-put"  :key="index">
+                      <a>
+                        <i class="icon iconfont" :class="item.icon"></i>
+                        <span>{{item.name}}</span>
+                      </a>
+                    </li>
+                  </template>             
                 </draggable>
               </template>        
             </div>         
