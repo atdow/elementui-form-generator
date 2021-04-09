@@ -1,3 +1,10 @@
+<!--
+ * @Author: atdow
+ * @Date: 2021-04-09 16:33:41
+ * @LastEditors: null
+ * @LastEditTime: 2021-04-09 16:51:20
+ * @Description: file content
+-->
 <template>
   <router-view></router-view>
 </template>

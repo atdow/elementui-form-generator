@@ -1,5 +1,5 @@
 <template>
-  <div class="fm-style">
+  <div class="fm-style" >
     <el-form ref="generateForm" 
       label-suffix=":"
       :size="data.config.size"

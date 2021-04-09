@@ -5,6 +5,7 @@
         <el-container>
           <el-aside width="250px">
             <div class="components-list">
+              <!-- 基础字段 -->
               <template v-if="basicFields.length">
                 <div class="widget-cate">{{$t('fm.components.basic.title')}}</div>
                 <draggable tag="ul" :list="basicComponents" 
@@ -12,17 +13,18 @@
                   @end="handleMoveEnd"
                   @start="handleMoveStart"
                   :move="handleMove"
-                >
-                  
-                  <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label" :class="{'no-put': item.type == 'divider'}" v-for="(item, index) in basicComponents" :key="index">
-                    <a>
-                      <i class="icon iconfont" :class="item.icon"></i>
-                      <span>{{item.name}}</span>
-                    </a>
-                  </li>
+                > 
+                  <template  v-for="(item, index) in basicComponents">
+                      <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label" :class="{'no-put': item.type == 'divider'}"  :key="index">
+                      <a>
+                        <i class="icon iconfont" :class="item.icon"></i>
+                        <span>{{item.name}}</span>
+                      </a>
+                    </li>
+                  </template>                            
                 </draggable>
               </template>
-              
+              <!-- 高级字段 -->
               <template v-if="advanceFields.length">
                 <div class="widget-cate">{{$t('fm.components.advance.title')}}</div>
                 <draggable tag="ul" :list="advanceComponents" 
@@ -40,8 +42,7 @@
                   </li>
                 </draggable>
               </template>
-
-              
+              <!-- 布局字段 -->
               <template v-if="layoutFields.length">
                 <div class="widget-cate">{{$t('fm.components.layout.title')}}</div>
                 <draggable tag="ul" :list="layoutComponents" 
@@ -58,10 +59,8 @@
                     </a>
                   </li>
                 </draggable>
-              </template>
-              
-            </div>
-            
+              </template>        
+            </div>         
           </el-aside>
           <el-container class="center-container" direction="vertical">
             <el-header class="btn-bar" style="height: 45px;">
@@ -161,7 +160,6 @@
           </cus-dialog>
         </el-container>
       </el-main>
-      <el-footer height="30px" style="font-weight: 600;">Powered by <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">vue-form-making</a></el-footer>
     </el-container>
   </div>
 </template>
@@ -273,13 +271,13 @@ export default {
       jsonCopyValue: '',
       jsonClipboard: null,
       jsonEg: `{
-  "list": [],
-  "config": {
-    "labelWidth": 100,
-    "labelPosition": "top",
-    "size": "small"
-  }
-}`,
+        "list": [],
+        "config": {
+          "labelWidth": 100,
+          "labelPosition": "top",
+          "size": "small"
+        }
+      }`,
       codeActiveName: 'vue',
     }
   },
